@@ -1,0 +1,269 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+
+    /* AfriKitchen Custom Colors */
+    --color-african-green: #2D5016;
+    --color-african-orange: #FF6B35;
+    --color-light-green: #4A7C59;
+    --color-cream: #F5F5DC;
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */
+
+/* AfriKitchen Utility Classes */
+@layer utilities {
+    .bg-african-green {
+        background-color: var(--color-african-green);
+    }
+
+    .text-african-green {
+        color: var(--color-african-green);
+    }
+
+    .border-african-green {
+        border-color: var(--color-african-green);
+    }
+
+    .bg-african-orange {
+        background-color: var(--color-african-orange);
+    }
+
+    .text-african-orange {
+        color: var(--color-african-orange);
+    }
+
+    .border-african-orange {
+        border-color: var(--color-african-orange);
+    }
+
+    .bg-light-green {
+        background-color: var(--color-light-green);
+    }
+
+    .text-light-green {
+        color: var(--color-light-green);
+    }
+
+    .border-light-green {
+        border-color: var(--color-light-green);
+    }
+
+    .bg-cream {
+        background-color: var(--color-cream);
+    }
+
+    .text-cream {
+        color: var(--color-cream);
+    }
+
+    .border-cream {
+        border-color: var(--color-cream);
+    }
+
+    /* Hover states */
+    .hover\:bg-african-green:hover {
+        background-color: var(--color-african-green);
+    }
+
+    .hover\:text-african-green:hover {
+        color: var(--color-african-green);
+    }
+
+    .hover\:bg-african-orange:hover {
+        background-color: var(--color-african-orange);
+    }
+
+    .hover\:text-african-orange:hover {
+        color: var(--color-african-orange);
+    }
+
+    .hover\:bg-light-green:hover {
+        background-color: var(--color-light-green);
+    }
+
+    .hover\:text-light-green:hover {
+        color: var(--color-light-green);
+    }
+}
+
+/* Custom styles for AfriKitchen */
+.hero-slide {
+    transition: transform 0.7s ease-in-out;
+}
+
+.food-card {
+    transition: all 0.3s ease;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+}
+
+.debug-section {
+    border: 3px solid red !important;
+    background: yellow !important;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+    .hero-tagline {
+        margin-top: 8px !important;
+    }
+
+    .hero-container {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 3rem !important;
+    }
+
+    .hero-text {
+        text-align: left !important;
+    }
+
+    .hero-title {
+        font-size: 3rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start !important;
+        gap: 1rem !important;
+    }
+
+    .hero-button {
+        padding: 1rem 2rem !important;
+        font-size: 1.125rem !important;
+    }
+
+    .hero-image {
+        margin-top: 0 !important;
+        max-height: 60vh !important;
+    }
+}
+
+/* Button hover effects */
+a[href="foods.html"]:hover {
+    background-color: #e55a2b !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4) !important;
+}
+
+a[href="#menu"]:hover {
+    background-color: white !important;
+    color: #2D5016 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Image hover effect */
+img[alt="African Cuisine"]:hover {
+    transform: scale(1.05) !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Fullscreen loader container */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2D5016 0%, #4A7C59 50%, #FF6B35 100%);
+    /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Logo styling */
+.logow {
+    width: 120px;
+    height: 120px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Optional animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
