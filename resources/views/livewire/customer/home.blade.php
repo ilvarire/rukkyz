@@ -73,6 +73,10 @@
     <!-- Menu Grid -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4">
+            <h2
+                style="font-size: 1.875rem; font-weight: bold; text-align: center; color: #2D5016; margin-bottom: 3rem;">
+                Special delight
+            </h2>
             <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
 
                 @forelse($specialFood as $food)
