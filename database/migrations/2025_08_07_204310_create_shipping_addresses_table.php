@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('shipping_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
-            $table->foreignId('shipping_fee_id')->constrained('shipping_fees')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('shipping_fee_id')->references('id')->on('shipping_fees')->onDelete('cascade');
             $table->string('city');
             $table->string('address');
             $table->string('phone_number');

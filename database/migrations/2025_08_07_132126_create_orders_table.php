@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('reference')->unique();
             $table->string('session_id')->unique();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('shipping_address_id')->constrained()->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shipping_address_id')->references('id')->on('shipping_addresses')->onDelete('cascade');
             $table->decimal('total_price', 15, 2);
             $table->text('note')->nullable();
             $table->enum('status', ['pending', 'processed', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->enum('payment_status', ['pending', 'paid', 'failed', 'refunded'])->default('pending');
             $table->string('delivered_at')->nullable();
-            $table->foreignId('coupon_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
             $table->timestamps();
         });
     }

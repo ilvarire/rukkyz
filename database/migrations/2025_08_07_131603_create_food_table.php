@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_available')->default(true);
             $table->boolean('is_special')->default(false);
             $table->boolean('is_featured')->default(false);
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

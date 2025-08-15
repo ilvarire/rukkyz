@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('food_reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('food_id')->constrained('food')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
             $table->integer('rating');
             $table->text('comment')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');

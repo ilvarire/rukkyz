@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
-            $table->foreignId('food_id')->constrained('food')->onDelete('cascade');
-            $table->foreignId('size_id')->constrained('sizes')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
             $table->integer('quantity')->default(1);
             $table->decimal('unit_price', 10, 2);
             $table->decimal('total', 10, 2);
