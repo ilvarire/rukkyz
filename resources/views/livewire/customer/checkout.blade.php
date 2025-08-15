@@ -15,7 +15,7 @@
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Country</label>
                                 <select wire:model.live="country_id"
-                                    class="w-full border border-gray-300 bg-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
                                     <option value="">-- select country --</option>
                                     @forelse ($countries as $country)
                                         <option value="{{ $country->id}}">{{ $country->name}}</option>
@@ -30,7 +30,7 @@
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">State</label>
                                 <select wire:model.live="state_id"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
                                     <option value="1">-- select state --</option>
                                     @if ($states)
                                         @foreach ($states as $state)
@@ -46,7 +46,7 @@
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Delivery Address</label>
                                 <input wire:model="address" type="text" value="{{ old('address') }}"
-                                    class="w-full border bg-gray-300 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                     placeholder="123 Main Street">
                                 @error('address')
                                     <span class="text-xs text-red-600">{{$message}}</span>
@@ -58,7 +58,7 @@
                                     <label class="block text-gray-700 font-semibold mb-2">Phone</label>
                                     <input type="tel" placeholder="+1 234 567 8900" wire:model="phone_number"
                                         value="{{ old('phone_number') }}"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
                                     @error('phone_number')
                                         <span class="text-xs text-red-600">{{$message}}</span>
                                     @enderror
@@ -68,7 +68,7 @@
                                         City
                                     </label>
                                     <input wire:model="city" type="text" value="{{ old('city') }}"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                         placeholder="NY">
                                     @error('city')
                                         <span class="text-xs text-red-600">{{$message}}</span>
@@ -77,7 +77,7 @@
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">ZIP Code</label>
                                     <input wire:model="zip_code" type="tel" value="{{ old('zip_code') }}"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                         placeholder="10001">
                                     @error('zip_code')
                                         <span class="text-xs text-red-600">{{$message}}</span>
@@ -88,7 +88,7 @@
                                 <label class="block text-gray-700 font-semibold mb-2">Delivery Instructions
                                     (Optional)</label>
                                 <textarea wire:model="note" value="{{ old('note') }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                     rows="3" placeholder="Any special delivery instructions..."></textarea>
                             </div>
                         </form>
@@ -119,7 +119,7 @@
 
                                 <div class="flex">
                                     <input wire:model.defer="coupon" type="text" placeholder="Coupon code"
-                                        class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:border-african-green">
+                                        class="flex-1 border border-gray-300 text-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:border-african-green">
                                     <button wire:click="applyCoupon"
                                         class="bg-african-green text-white px-4 py-2 rounded-r-lg hover:bg-light-green transition duration-300">
                                         Apply
