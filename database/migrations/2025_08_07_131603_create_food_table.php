@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('description');
