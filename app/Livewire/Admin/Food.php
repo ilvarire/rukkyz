@@ -8,6 +8,7 @@ use App\Models\FoodPrice;
 use App\Models\Size;
 use Flux\Flux;
 use Illuminate\Support\Number;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -64,14 +65,46 @@ class Food extends Component
     public function updateFood()
     {
         $food = ModelsFood::findOrFail($this->foodId);
+        // $this->validate([
+        //     'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100|unique:food,name' . $this->foodId,
+        //     'description' => 'required|string|min:5',
+        //     'category_id' => 'required|exists:categories,id',
+        //     'is_available' => 'boolean',
+        //     'is_special' => 'boolean',
+        //     'is_featured' => 'boolean',
+        //     'image' => 'nullable|image|max:2048'
+        // ]);
+
         $this->validate([
-            'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100|unique:food,name' . $this->foodId,
-            'description' => 'required|string|min:5',
-            'category_id' => 'required|exists:categories,id',
-            'is_available' => 'boolean',
-            'is_special' => 'boolean',
-            'is_featured' => 'boolean',
-            'image' => 'nullable|image|max:2048'
+            'name' => [
+                'required',
+                'regex:/^[a-zA-Z0-9\s]+$/',
+                'max:100',
+                Rule::unique('food', 'name')->ignore($this->foodId),
+            ],
+            'description' => [
+                'required',
+                'string',
+                'min:5',
+            ],
+            'category_id' => [
+                'required',
+                'exists:categories,id',
+            ],
+            'is_available' => [
+                'boolean',
+            ],
+            'is_special' => [
+                'boolean',
+            ],
+            'is_featured' => [
+                'boolean',
+            ],
+            'image' => [
+                'nullable',
+                'image',
+                'max:2048',
+            ],
         ]);
 
 
