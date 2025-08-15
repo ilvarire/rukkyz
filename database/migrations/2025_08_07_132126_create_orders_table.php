@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('status', ['pending', 'processed', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->enum('payment_status', ['pending', 'paid', 'failed', 'refunded'])->default('pending');
             $table->string('delivered_at')->nullable();
-            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
+            $table->foreignId('coupon_id')->constrained('coupons')->onDelete('cascade');
             $table->timestamps();
         });
     }
