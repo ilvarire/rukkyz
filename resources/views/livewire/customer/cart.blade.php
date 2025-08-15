@@ -22,7 +22,7 @@
                                             {{ Number::currency($item['total_amount'], 'GBP') }}
                                         </span>
                                         <select wire:change="updateSize({{ $index }}, $event.target.value)"
-                                            class="text-primary w-[60px] text-center mt-[10px] rounded-[5px] py-[5px] m-2 px-[10px]">
+                                            class="text-primary w-[60px] border border-gray-300 text-center mt-[10px] rounded-[5px] py-2 m-2 px-4">
                                             @forelse(App\Models\Food::find($item['food_id'])->prices as $price)
                                                 <option value="{{$price->size_id}}"
                                                     @selected($price->size_id == $item['size_id'])>
@@ -38,8 +38,9 @@
                                                 class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
                                                 -
                                             </button><br>
-                                            <span class="px-3 py-1 font-semibold">
-                                                {{$item['quantity']}}
+                                            <span
+                                                class="px-4 py-1 font-semibold border border-gray-300 text-primary font-bold">
+                                                <p class="text-gray-600 text-sm">Qty: {{$item['quantity']}}</p>
                                             </span>
                                             <button wire:click="increaseQty({{$item['food_id']}})"
                                                 class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
