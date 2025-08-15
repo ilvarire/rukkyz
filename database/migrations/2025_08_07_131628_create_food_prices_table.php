@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('food_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
-            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');
+            $table->foreignId('food_id')->constrained('food')->onDelete('cascade');
+            $table->foreignId('size_id')->constrained('sizes')->onDelete('cascade');
             $table->decimal('price', 10, 2);
             $table->timestamps();
 

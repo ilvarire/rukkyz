@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('food', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('description');
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_available')->default(true);
             $table->boolean('is_special')->default(false);
             $table->boolean('is_featured')->default(false);
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
