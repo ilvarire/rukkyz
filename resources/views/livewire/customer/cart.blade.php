@@ -8,7 +8,7 @@
                 <!-- Cart Items -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h2 class="text-xl font-semibold text-african-green mb-6">Cart Items (3)</h2>
+                        <h2 class="text-xl font-semibold text-african-green mb-6">Cart Items ({{$cart_count}})</h2>
 
                         @forelse ($cart_items as $index => $item)
                             <!-- Cart Item 1 -->
@@ -17,21 +17,7 @@
                                     class="w-20 h-20 rounded-lg object-cover mr-4">
                                 <div class="flex-1">
                                     <h3 class="font-semibold text-african-green">{{$item['name']}}</h3>
-                                    <p class="text-gray-600 text-sm">Traditional West African rice dish</p>
-                                    <div class="flex items-center mt-2">
-                                        <div class="flex items-center border border-gray-300 rounded-lg mr-4">
-                                            <button wire:click="decreaseQty({{$item['food_id']}})"
-                                                class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
-                                                -
-                                            </button>
-                                            <span class="px-3 py-1 font-semibold">
-                                                {{$item['quantity']}}
-                                            </span>
-                                            <button wire:click="increaseQty({{$item['food_id']}})"
-                                                class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
-                                                +
-                                            </button>
-                                        </div>
+                                    <p class="text-gray-600 text-sm">
                                         <span class="text-african-orange font-semibold">
                                             {{ Number::currency($item['total_amount'], 'GBP') }}
                                         </span>
@@ -45,10 +31,26 @@
                                             @empty
                                             @endforelse
                                         </select>
+                                    </p>
+                                    <div class="flex items-center mt-2">
+                                        <div class="flex items-center border border-gray-300 rounded-lg mr-4">
+                                            <button wire:click="decreaseQty({{$item['food_id']}})"
+                                                class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
+                                                -
+                                            </button><br>
+                                            <span class="px-3 py-1 font-semibold">
+                                                {{$item['quantity']}}
+                                            </span>
+                                            <button wire:click="increaseQty({{$item['food_id']}})"
+                                                class="px-2 py-1 cursor-pointer text-gray-600 hover:text-african-orange">
+                                                +
+                                            </button>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <button wire:click="removeFromCart({{ $item['food_id']}})"
-                                    class="text-red-500 hover:text-red-700 ml-4">
+                                    class="text-red-500 cursor-pointer hover:text-red-700 ml-4">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
