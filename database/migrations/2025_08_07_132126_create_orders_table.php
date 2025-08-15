@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('reference')->unique();
             $table->string('session_id')->unique();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('shipping_address_id')->constrained()->onDelete('cascade');
             $table->decimal('total_price', 15, 2);
             $table->text('note')->nullable();

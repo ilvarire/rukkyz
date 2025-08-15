@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shipping_fees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->constrained()->onDelete('cascade');
+            $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
             $table->string('state');
             $table->decimal('base_fee', 8, 2);
             $table->string('est_delivery_time')->nullable();
