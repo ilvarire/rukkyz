@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('shipping_addresses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('shipping_fee_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->foreign('shipping_fee_id')->references('id')->on('shipping_fees')->onDelete('cascade');

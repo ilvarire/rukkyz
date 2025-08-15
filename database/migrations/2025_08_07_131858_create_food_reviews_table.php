@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('food_reviews', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('food_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
             $table->integer('rating');
