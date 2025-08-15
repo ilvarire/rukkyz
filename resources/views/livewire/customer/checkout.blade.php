@@ -15,7 +15,7 @@
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Country</label>
                                 <select wire:model.live="country_id"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                    class="w-full border border-gray-300 bg-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
                                     <option value="">-- select country --</option>
                                     @forelse ($countries as $country)
                                         <option value="{{ $country->id}}">{{ $country->name}}</option>
@@ -46,7 +46,7 @@
                             <div>
                                 <label class="block text-gray-700 font-semibold mb-2">Delivery Address</label>
                                 <input wire:model="address" type="text" value="{{ old('address') }}"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                    class="w-full border bg-gray-300 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                     placeholder="123 Main Street">
                                 @error('address')
                                     <span class="text-xs text-red-600">{{$message}}</span>

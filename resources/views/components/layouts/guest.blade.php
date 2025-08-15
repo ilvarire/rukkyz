@@ -86,7 +86,7 @@
                     loader.addEventListener("transitionend", () => {
                         loader.remove();
                     });
-                }, 2000);
+                }, 500);
             }
         });
 
