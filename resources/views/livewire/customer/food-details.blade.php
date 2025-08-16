@@ -96,12 +96,12 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"Absolutely delicious! The Jollof Rice tasted just like my grandmother used
-                        to make. The spices were perfectly balanced and the rice was cooked to perfection."</p>
+                    <p class="text-gray-600">
+                        "Was delicious!"
+                    </p>
                 </div>
 
                 <div class="bg-cream p-6 rounded-lg">
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-600">"This was my first time trying African cuisine and I was blown away! The
-                        Jollof Rice had such rich flavors and the portion size was generous. Highly recommend!"</p>
+                    <p class="text-gray-600">"This was my first time trying African cuisine and I was blown away! Highly
+                        recommend!"</p>
                 </div>
             </div>
         </div>
