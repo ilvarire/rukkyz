@@ -37,6 +37,23 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("livewire:navigated", function () {
+            const loader = document.getElementById("loader");
+
+            if (loader) {
+                // Optional delay
+                setTimeout(() => {
+                    loader.classList.add("hidden");
+
+                    loader.addEventListener("transitionend", () => {
+                        loader.remove();
+                    });
+                }, 500);
+            }
+        });
+
+    </script>
     @fluxScripts
 </body>
 

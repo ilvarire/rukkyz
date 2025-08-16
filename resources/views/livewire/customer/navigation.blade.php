@@ -2,9 +2,11 @@
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between items-center py-4">
             <!-- Logo -->
-            <div class="flex items-center">
-                <img src="{{ url('/logo.png') }}" class="ml-4" alt="logo" style="width: 3rem;">
-            </div>
+            <a href="{{route('home')}}">
+                <div class="flex items-center">
+                    <img src="{{ url('/logo.png') }}" class="ml-4" alt="logo" style="width: 3rem;">
+                </div>
+            </a>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8">
