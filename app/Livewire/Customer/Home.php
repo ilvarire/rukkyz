@@ -34,7 +34,7 @@ class Home extends Component
     {
         $categories = Category::inRandomOrder()->take(3)->get();
         $specialFood = Food::with('prices')
-            ->where('is_special', true)->inRandomOrder()->take(4)
+            ->where('is_special', true)->take(4)
             ->get();
         return view('livewire.customer.home', [
             'categories' => $categories,
