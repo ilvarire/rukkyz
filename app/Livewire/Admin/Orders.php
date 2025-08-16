@@ -27,7 +27,7 @@ class Orders extends Component
                 $query->where('status', $this->status)
             )
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->paginate(10);
 
         return view('livewire.admin.orders', [
             'orders' => $orders
