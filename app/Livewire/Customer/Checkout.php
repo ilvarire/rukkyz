@@ -188,8 +188,9 @@ class Checkout extends Component
         ]);
 
         $redirect_url = $sessionCheckout->url;
+        $session_id = $sessionCheckout->id;
 
-        DB::transaction(function ($sessionCheckout) {
+        DB::transaction(function () use ($session_id) {
             //create order
             $shippingAddress = ShippingAddress::create([
                 'user_id' => Auth::user()->id,
@@ -203,7 +204,7 @@ class Checkout extends Component
 
             $order = Order::create([
                 'reference' => 'ord-' . Auth::user()->id . date('Ymd') . Str::random(6),
-                'session_id' => $sessionCheckout->id,
+                'session_id' => $session_id,
                 'user_id' => Auth::user()->id,
                 'shipping_address_id' => $shippingAddress->id,
                 'total_price' => $this->cart_total,

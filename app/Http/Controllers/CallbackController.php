@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewOrderNotification;
 use App\Mail\OrderPlaced;
 use App\Models\Order;
 use App\Models\User;
@@ -47,7 +48,7 @@ class CallbackController extends Controller
                     $admin = User::where('role', 1)->value('email');
                     Mail::to(request()->user())->send(new OrderPlaced($order));
                     if ($admin) {
-                        Mail::to($admin)->send(new OrderPlaced($order));
+                        Mail::to($admin)->send(new NewOrderNotification($order));
                     }
                 }
                 break;

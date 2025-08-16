@@ -162,15 +162,18 @@
                         <div class="border-t border-gray-200 pt-4 space-y-3">
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Subtotal</span>
-                                <span class="font-semibold">{{ Number::currency($grand_total, 'GBP') }}</span>
+                                <span
+                                    class="font-semibold text-gray-600">{{ Number::currency($grand_total, 'GBP') }}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Delivery Fee</span>
-                                <span class="font-semibold">{{ Number::currency($shippingFee, 'GBP') }}</span>
+                                <span
+                                    class="font-semibold text-gray-600">{{ Number::currency($shippingFee, 'GBP') }}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-600">Discount(coupon)</span>
-                                <span class="font-semibold">{{ Number::currency($discount, 'GBP') }}</span>
+                                <span
+                                    class="font-semibold text-gray-600">{{ Number::currency($discount, 'GBP') }}</span>
                             </div>
                             <div class="border-t border-gray-200 pt-3">
                                 <div class="flex justify-between">
