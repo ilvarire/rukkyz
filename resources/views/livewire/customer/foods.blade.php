@@ -18,7 +18,7 @@
                 <!-- Search input -->
                 <div class="">
                     <input wire:model.live.debounce.500ms="search" style="width: 130px;"
-                        class="px-6 py-2 pl-2 mt-1 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-white border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:border-gray-600 focus:outline-none focus:shadow-outline-purple form-input"
+                        class="px-6 py-2 pl-2 mt-1 pr-2 text-sm text-gray-700 placeholder-gray-600 border-0 rounded-md focus:border-gray-600 focus:outline-none form-input"
                         type="text" placeholder="Search Food" aria-label="Search" />
 
                 </div><br>
