@@ -37,7 +37,7 @@
             <!-- Right Side - Image -->
             <div class="hero-image-container"
                 style="flex: 1; display: flex; justify-content: center; align-items: center; z-index: 10; width: 100%; margin-top: 1rem;">
-                <img src="{{ url('/images/banner.png')}}" alt="African Cuisine" class="hero-image"
+                <img src="{{ url('/images/banner2.png')}}" alt="African Cuisine" class="hero-image"
                     style="max-width: 100%; height: auto; max-height: 40vh; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
             </div>
         </div>
