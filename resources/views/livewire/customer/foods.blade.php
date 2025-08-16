@@ -1,6 +1,6 @@
 <div class="">
     <section class="pt-19 relative overflow-hidden">
-        <div class="relative h-64 md:h-80">
+        <div class="relative h-74 md:h-80">
             <img src="{{ url('/images/bnr2.jpg')}}" alt="African food banner" class="w-full object-cover">
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center text-white">
