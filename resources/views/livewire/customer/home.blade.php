@@ -8,17 +8,18 @@
             <!-- Left Side - Text Content -->
             <div class="hero-text" style="flex: 1; color: white; z-index: 10; text-align: center; width: 100%;">
                 <p class="hero-tagline mt-4"
-                    style="color: #FFD700; font-weight: 600; margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
-                    Authentic Nigerian Flavors</p>
+                    style="color: #FFD700; font-family: cursive; font-weight: 600; margin-bottom: 1rem; font-size: 1rem; text-transform: lowercase; letter-spacing: 1px;">
+                    RukkyzKitchen
+                </p>
                 <h1 class="hero-title"
                     style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-                    Savor Africa's Rich<br>
-                    <span style="color: #FFD700;">Culinary Heritage</span>
+                    An innovative<br>
+                    <span style="color: #FFD700;">Culinary Venture</span>
                 </h1>
                 <p class="hero-subtitle"
                     style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); max-width: 600px; margin-left: auto; margin-right: auto;">
-                    From smoky jollof to spicy stews, discover iconic dishes from Nigeria, bringing the vibrant taste of
-                    Nigeria to your doorstepe.
+                    offering a blend of traditional and modern take on African cuisine. With vibrant rich flavours and
+                    spice, each dish takes you on a journey through the heart of Africa one bite at a time.
                 </p>
                 <div class="hero-buttons"
                     style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">

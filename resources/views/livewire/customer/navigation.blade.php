@@ -120,12 +120,14 @@
                     class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-african-orange hover:bg-gray-50 transition duration-300">
                     <i class="fas fa-heart mr-2"></i>Wishlist
                 </a>
-                <div class="border-t border-gray-200 pt-4 mt-4">
-                    <a href="#" @click="isMenuOpen = false"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-african-orange hover:bg-gray-50 transition duration-300">
-                        <i class="fas fa-user mr-2"></i>Profile
-                    </a>
-                </div>
+                @auth
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <a href="{{ route('orders') }}" @click="isMenuOpen = false"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-african-orange hover:bg-gray-50 transition duration-300">
+                            <i class="fas fa-user mr-2"></i>Profile
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>
