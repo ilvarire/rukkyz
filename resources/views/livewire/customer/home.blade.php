@@ -18,7 +18,7 @@
                 </h1>
                 <p class="hero-subtitle"
                     style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); max-width: 600px; margin-left: auto; margin-right: auto;">
-                    offering a blend of traditional and modern take on African cuisine. With vibrant rich flavours and
+                    Offering a blend of traditional and modern take on African cuisine. With vibrant rich flavours and
                     spice, each dish takes you on a journey through the heart of Africa one bite at a time.
                 </p>
                 <div class="hero-buttons"
