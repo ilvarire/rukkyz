@@ -63,6 +63,7 @@
                         </div>
                     </div>
                 @empty
+                    <p class="text-gray-600 mb-4 text-sm">No food found!</p>
                 @endforelse
             </div>
         </div>

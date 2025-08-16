@@ -48,9 +48,6 @@ class Foods extends Component
 
         $foods = $query->with('category')->latest()->paginate(10);
 
-        // $foods = Food::with('category')
-        //     ->orderBy('created_at', 'desc')
-        //     ->paginate(20);
         $categories = Category::all();
         return view('livewire.customer.foods', [
             'foods' => $foods,

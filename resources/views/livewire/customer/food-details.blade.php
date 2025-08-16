@@ -43,7 +43,7 @@
                             <span class="text-gray-500 line-through ml-2"></span>
                             <div class="flex items-center border border-gray-300 rounded-lg">
                                 <select wire:model.live="selectedSizeId"
-                                    class="text-primary w-[160px] text-center mt-[10px] rounded-[5px] py-[5px] m-2 px-[10px]">
+                                    class="text-primary w-[160px] text-center text-gray-600 mt-[10px] rounded-[5px] py-[5px] m-2 px-[10px]">
                                     @forelse($food->prices as $price)
                                         <option value="{{$price->id}}">
                                             {{ $price->size->label }} - {{ Number::currency($price->price, 'GBP') }}
@@ -55,11 +55,10 @@
 
                         </div>
                         <div class="flex items-center space-x-4">
-
                             <div class="flex items-center border border-gray-300 rounded-lg">
                                 <h4 class="px-3 py-2 text-gray-600 hover:text-african-orange">Qty</h4>
                                 <input type="number" wire:model="quantity" min="1" max="200"
-                                    class="px-4 py-2 font-semibold">
+                                    class="px-4 py-2 font-semibold text-gray-600">
                             </div>
                         </div>
                     </div>
@@ -132,52 +131,33 @@
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-african-green mb-8">You Might Also Like</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                        alt="Nyama Choma" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-african-green mb-2">Afang</h3>
-                        <p class="text-gray-600 mb-4 text-sm">East African grilled meat served with traditional sides.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-african-orange">£70.00</span>
-                            <a href="food-details.html"
-                                class="bg-african-green hover:bg-light-green text-white px-4 py-2 rounded-lg transition duration-300 text-sm">
-                                View Details
-                            </a>
+                @forelse($relatedFood as $food)
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <img src="{{ asset('storage/' . $food->image_url) }}" alt="Jollof Rice"
+                            class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <a href="{{route('food.details', $food->slug)}}" class="cursor-pointer">
+                                    <h3 class="text-xl font-semibold text-african-green">{{ $food->name }}</h3>
+                                </a>
+                                <button class="text-gray-400 cursor-pointer hover:text-red-500">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-600 mb-4 text-sm">{{ $food->description }}</p>
+                            <div class="flex justify-between items-center">
+                                <span
+                                    class="text-2xl font-bold text-african-orange">{{ Number::currency($food->prices->first()->price, 'GBP') }}</span>
+                                <a href="" wire:click.prevent="addToCartOnly({{ $food->id}})"
+                                    class="bg-african-green hover:bg-light-green text-white px-4 py-2 rounded-lg transition duration-300 text-sm">
+                                    Add To Cart
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="{{ url('/images/bnr2.jpg')}}" alt="Egusi Soup" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-african-green mb-2">Egusi Soup</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Nigerian soup with ground melon seeds and vegetables.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-african-orange">£60.00</span>
-                            <a href="food-details.html"
-                                class="bg-african-green hover:bg-light-green text-white px-4 py-2 rounded-lg transition duration-300 text-sm">
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="{{ url('/images/ban.jpg')}}" alt="Suya" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-african-green mb-2">Edikaikong</h3>
-                        <p class="text-gray-600 mb-4 text-sm">Spicy Nigerian skewered meat with peanut spice mix.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-african-orange">£65.00</span>
-                            <a href="food-details.html"
-                                class="bg-african-green hover:bg-light-green text-white px-4 py-2 rounded-lg transition duration-300 text-sm">
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    <p class="text-gray-600 mb-4 text-sm">No food found!</p>
+                @endforelse
             </div>
         </div>
     </section>
