@@ -18,7 +18,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-african-green text-white py-12">
+    <footer class="bg-african-green text-white py-12" style="background-color: #204043;
+background-image: linear-gradient(215deg, #1a4449 0%, #000000 74%);">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
