@@ -15,14 +15,20 @@
     <section class="py-8 bg-white shadow-sm">
         <div class="max-w-xl mx-auto px-4 overflow-hidden">
             <div class="flex flex-wrap gap-4 justify-center">
-                <button class="bg-african-green text-white px-6 py-2 rounded-lg font-semibold">All</button>
-                @forelse($categories as $category)
-                    <button
-                        class="bg-gray-200 text-gray-700 hover:bg-african-green hover:text-white px-6 py-2 rounded-lg font-semibold transition duration-300">
-                        {{ $category->name}}
-                    </button>
-                @empty
-                @endforelse
+                <!-- Search input -->
+                <div class="">
+                    <input wire:model.live.debounce.500ms="search" style="width: 130px;"
+                        class="px-6 py-2 pl-2 mt-1 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:border-gray-600 focus:outline-none focus:shadow-outline-purple form-input"
+                        type="text" placeholder="Search Food" aria-label="Search" />
+
+                </div><br>
+                <select wire:model.live="selectedCategory"
+                    class="text-gray-600 bg-white border border-gray-600 cursor-pointer px-6 py-2 rounded-lg font-semibold">
+                    <option value="">All Categories</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id}}">{{ $category->name}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </section>
@@ -32,7 +38,7 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-                @forelse($foods as $food)
+                @forelse($foods->items() as $food)
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
                         <img src="{{ asset('storage/' . $food->image_url) }}" alt="Jollof Rice"
                             class="w-full h-48 object-cover">

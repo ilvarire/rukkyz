@@ -13,6 +13,8 @@ use Livewire\WithPagination;
 #[Layout('components.layouts.guest')]
 class Foods extends Component
 {
+    public $search = '';
+    public $selectedCategory = null;
     use WithPagination;
 
     public function addToCart($food_id, $size_id = 'default', $quantity = 1)
@@ -35,9 +37,20 @@ class Foods extends Component
     }
     public function render()
     {
-        $foods = Food::with('category')
-            ->orderBy('created_at', 'desc')
-            ->paginate(20);
+        $query = Food::query();
+
+        if (!empty($this->search)) {
+            $query->where('name', 'like', '%' . $this->search . '%');
+        }
+        if (!empty($this->selectedCategory)) {
+            $query->where('category_id', $this->selectedCategory);
+        }
+
+        $foods = $query->with('category')->latest()->paginate(10);
+
+        // $foods = Food::with('category')
+        //     ->orderBy('created_at', 'desc')
+        //     ->paginate(20);
         $categories = Category::all();
         return view('livewire.customer.foods', [
             'foods' => $foods,
