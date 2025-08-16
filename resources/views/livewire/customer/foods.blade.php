@@ -5,7 +5,7 @@
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center text-white">
                     <h1 class="text-4xl font-bold mb-2 drop-shadow-md">Our Menu</h1>
-                    <p class="text-lg md:text-xl drop-shadow">Discover authentic African flavors from across the
+                    <p class="text-lg mb-6 md:text-xl drop-shadow">Discover authentic African flavors from across the
                         continent</p>
                 </div>
             </div>
