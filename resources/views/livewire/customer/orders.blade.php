@@ -78,7 +78,7 @@
                                         </div>
                                         <span class="text-xs font-semibold text-african-green">Ordered</span>
                                     </div>
-                                    @if ($order->status === 'processed')
+                                    @if ($order->status === 'processed' || $order->status === 'shipped' || $order->status === 'delivered')
                                         <div class="w-12 h-1 bg-african-green"></div>
                                         <div class="flex flex-col items-center">
                                             <div
@@ -98,12 +98,12 @@
                                         </div>
                                     @endif
 
-                                    @if ($order->status === 'shipped')
+                                    @if ($order->status === 'shipped' || $order->status === 'delivered')
                                         <div class="w-12 h-1 bg-african-green"></div>
                                         <div class="flex flex-col items-center">
                                             <div
                                                 class="w-10 h-10 bg-african-green rounded-full flex items-center justify-center mb-1">
-                                                <i class="fas fa-motorcycle text-gray-500 text-sm"></i>
+                                                <i class="fas fa-motorcycle text-white text-sm"></i>
                                             </div>
                                             <span class="text-xs font-semibold text-gray-500">On the Way</span>
                                         </div>
@@ -123,7 +123,7 @@
                                         <div class="flex flex-col items-center">
                                             <div
                                                 class="w-10 h-10 bg-african-green rounded-full flex items-center justify-center mb-1">
-                                                <i class="fas fa-home text-gray-500 text-sm"></i>
+                                                <i class="fas fa-home text-white text-sm"></i>
                                             </div>
                                             <span class="text-xs font-semibold text-gray-500">Delivered</span>
                                         </div>

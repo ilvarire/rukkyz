@@ -13,6 +13,7 @@ use App\Livewire\Customer\Guide;
 use App\Livewire\Customer\Home;
 use App\Livewire\Customer\Orders;
 use App\Livewire\Customer\Policy;
+use App\Livewire\Customer\Profile as CustomerProfile;
 use App\Livewire\Customer\Success;
 use App\Livewire\Customer\Wishlist;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function 
     // Route::get('/payments', PaymentIndex::class)->name('payments');
 
     // Route::redirect('settings', 'settings/profile');
-    // Route::get('settings/profile', Profile::class)->name('settings.profile');
+    Route::get('profile', CustomerProfile::class)->name('profile');
     // Route::get('settings/password', Password::class)->name('settings.password');
     // Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 });

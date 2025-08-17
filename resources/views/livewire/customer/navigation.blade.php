@@ -47,9 +47,12 @@
                         {{ $cart_count }}
                     </span>
                 </a>
-                <a href="#" class="text-gray-600 hover:text-african-orange transition duration-300">
-                    <i class="fas fa-user text-xl"></i>
-                </a>
+                @auth
+                    <a href="{{ route('profile') }}"
+                        class="text-gray-600 hover:text-african-orange transition duration-300">
+                        <i class="fas fa-user text-xl"></i>
+                    </a>
+                @endauth
             </div>
 
             <!-- Mobile Menu Button -->

@@ -20,6 +20,11 @@ class OrderItem extends Model
         return $this->belongsTo(Food::class);
     }
 
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
     public function size()
     {
         return $this->belongsTo(Size::class);

@@ -46,6 +46,11 @@ class Food extends Model
         return $this->belongsTo(Size::class, 'size_id');
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     protected function casts(): array
     {
         return [
