@@ -18,8 +18,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-african-green text-white py-12" style="background-color: #000000;
-background-image: linear-gradient(147deg, #000000 0%, #2e2219 74%);">
+    <footer class="bg-african-green text-white py-12"
+        style="background-color: #000000; background-image: url('{{url('images/bg.jpg')}}'); background-size: cover; background-position: center;">
+
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
@@ -92,6 +93,19 @@ background-image: linear-gradient(147deg, #000000 0%, #2e2219 74%);">
         });
 
     </script>
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68a22db0b25b86192ad78320/1j2so4v3v';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @fluxScripts
 </body>

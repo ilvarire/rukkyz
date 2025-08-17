@@ -69,7 +69,7 @@ class Checkout extends Component
         $this->calculateShipping();
     }
 
-    public function calculateShipping()
+    private function calculateShipping()
     {
 
         if (!$this->country_id || !$this->state_id) return;
@@ -122,7 +122,7 @@ class Checkout extends Component
         $this->updateTotal();
     }
 
-    public function  updateTotal()
+    private function  updateTotal()
     {
         $this->cart_total = max(0, $this->grand_total + $this->shippingFee - $this->discount);
     }
