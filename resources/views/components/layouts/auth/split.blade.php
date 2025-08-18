@@ -49,7 +49,7 @@
                     loader.addEventListener("transitionend", () => {
                         loader.remove();
                     });
-                }, 500);
+                }, 1500);
             }
         });
 

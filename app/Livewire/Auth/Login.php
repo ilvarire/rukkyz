@@ -47,7 +47,7 @@ class Login extends Component
         $authUserRole = Auth::user()->role;
 
         if ($authUserRole === 1) {
-            $this->redirectIntended(default: route('admin.dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route('admin.dashboard', absolute: false));
         } else {
             $user = Auth::user();
             // FoodService::syncGuestCartToDatabase($user);

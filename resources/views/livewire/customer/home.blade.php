@@ -1,7 +1,7 @@
 <div>
     <!-- Hero Section with CSS Classes -->
     <section class="hero-section"
-        style="position: relative; min-height: 80vh; background: linear-gradient(135deg, #2D5016 0%, #4A7C59 50%, #FF6B35 100%); display: flex; align-items: center; overflow: hidden; padding-top: 5rem;">
+        style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; position: relative; min-height: 80vh; background: linear-gradient(135deg, #2D5016 0%, #4A7C59 50%, #FF6B35 100%); display: flex; align-items: center; overflow: hidden; padding-top: 5rem;">
         <div class="hero-container"
             style="max-width: 80rem; margin: 0 auto; padding: 0 1rem; width: 100%; display: flex; align-items: center; gap: 2rem; flex-direction: column; min-height: 75vh;">
 

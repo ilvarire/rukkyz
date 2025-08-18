@@ -8,6 +8,8 @@ use App\Models\FoodPrice;
 use App\Models\FoodSize;
 use App\Models\Size;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
@@ -36,9 +38,23 @@ class AddFood extends Component
             'prices' => 'required|array',
             'prices.*' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'required|image|max:2048'
+            'image' => 'required|image|max:5120'
         ]);
-        // dd($validated);
+
+        $manager = ImageManager::withDriver(new Driver);
+        $img = $manager->read($this->image->getRealPath());
+        $width = $img->width();
+        $height = $img->height();
+
+        $expectedRatio = 3 / 4;
+        $actualRatio = $width / $height;
+        $tolerance = 0.02;
+
+        if (abs($actualRatio - $expectedRatio) > $tolerance) {
+            $this->addError("image", "Image must have a 3:4 aspect ratio.");
+            return;
+        }
+
         $food = Food::create([
             'name' => str(trim($validated['name']))->title(),
             'slug' => Str::slug($validated['name']),

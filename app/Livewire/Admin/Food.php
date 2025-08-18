@@ -7,8 +7,11 @@ use App\Models\Food as ModelsFood;
 use App\Models\FoodPrice;
 use App\Models\Size;
 use Flux\Flux;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Number;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -65,15 +68,6 @@ class Food extends Component
     public function updateFood()
     {
         $food = ModelsFood::findOrFail($this->foodId);
-        // $this->validate([
-        //     'name' => 'required|regex:/^[a-zA-Z0-9\s]+$/|max:100|unique:food,name' . $this->foodId,
-        //     'description' => 'required|string|min:5',
-        //     'category_id' => 'required|exists:categories,id',
-        //     'is_available' => 'boolean',
-        //     'is_special' => 'boolean',
-        //     'is_featured' => 'boolean',
-        //     'image' => 'nullable|image|max:2048'
-        // ]);
 
         $this->validate([
             'name' => [
@@ -103,7 +97,7 @@ class Food extends Component
             'image' => [
                 'nullable',
                 'image',
-                'max:2048',
+                'max:5120',
             ],
         ]);
 
@@ -118,6 +112,24 @@ class Food extends Component
         ]);
 
         if ($this->image) {
+            $manager = ImageManager::withDriver(new Driver);
+            $img = $manager->read($this->image->getRealPath());
+            $width = $img->width();
+            $height = $img->height();
+
+            $expectedRatio = 3 / 4;
+            $actualRatio = $width / $height;
+            $tolerance = 0.02;
+
+            if (abs($actualRatio - $expectedRatio) > $tolerance) {
+                $this->addError("image", "Image must have a 3:4 aspect ratio.");
+                return;
+            }
+
+            if ($food->image_url && File::exists(public_path($food->image_url))) {
+                File::delete(public_path($food->image_url));
+            }
+
             $path = $this->image->store('food', 'public');
             $food->update(['image_url' => $path]);
         }
@@ -152,6 +164,9 @@ class Food extends Component
     public function deleteFood()
     {
         $food = ModelsFood::findOrFail($this->foodId);
+        if ($food->image_url && File::exists(public_path($food->image_url))) {
+            File::delete(public_path($food->image_url));
+        }
         $food->delete();
         Flux::modal('delete-food')->close();
         return redirect()->route('admin.food')->with('success', 'deleted successfully');

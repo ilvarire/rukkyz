@@ -1,11 +1,12 @@
 <div class="">
-    <section class="pt-19 relative overflow-hidden">
+    <section class="pt-19 relative overflow-hidden"
+        style="border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div class="relative h-74 md:h-80">
-            <img src="{{ url('/images/bnr2.jpg')}}" alt="African food banner" class="w-full object-cover">
+            <img src="{{ url('/images/bg-3.jpg')}}" alt="African food banner" class="w-full object-cover">
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center text-white">
                     <h1 class="text-4xl font-bold mb-2 drop-shadow-md">Our Menu</h1>
-                    <p class="text-lg mb-6 md:text-xl drop-shadow">Discover authentic African flavors from across the
+                    <p class="text-sm mb-6 md:text-xl drop-shadow">Discover authentic African flavors from across the
                         continent</p>
                 </div>
             </div>

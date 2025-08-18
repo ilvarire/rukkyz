@@ -19,7 +19,8 @@
 
     <!-- Footer -->
     <footer class="bg-african-green text-white py-12"
-        style="background-color: #000000; background-image: url('{{url('images/bg.jpg')}}'); background-size: cover; background-position: center;">
+        style="background-color: #000000;
+background-image: linear-gradient(115deg, #000000 0%, #301b13 74%); border-top-left-radius: 20px; border-top-right-radius: 20px;">
 
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-8">
@@ -88,7 +89,7 @@
                     loader.addEventListener("transitionend", () => {
                         loader.remove();
                     });
-                }, 500);
+                }, 1500);
             }
         });
 
