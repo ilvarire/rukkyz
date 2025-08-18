@@ -10,7 +10,7 @@
 <meta property="og:title" content="Rukkyz kitchen - Authentic Nigerian Food Delivered Across the UK">
 <meta property="og:description"
     content="Craving Nigerian cuisine in luton or any part of the Uk? Order fresh, delicious Nigerian meals from rukkyzkitchen – delivered hot and fast anywhere in the UK.">
-<meta property="og:image" content="{{ url('images/edi1.png')}}">
+<meta property="og:image" content="{{ url('logo.png')}}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rukkyzkitchen">
 
