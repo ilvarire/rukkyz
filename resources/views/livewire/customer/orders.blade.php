@@ -65,7 +65,6 @@
                             @endforeach
 
                         </div>
-
                         <!-- Order Status -->
                         <div class="bg-cream rounded-lg p-4 mb-4">
                             <h4 class="font-semibold text-african-green mb-3">Order Status</h4>
