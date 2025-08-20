@@ -72,9 +72,10 @@ class Orders extends Component
         $order->status = 'delivered';
         $order->save();
         //send order delivered email
-        Mail::to($order->user->email)->queue(
+        Mail::to($order->user->email)->send(
             new OrderDelivered($order->reference)
         );
+
         Flux::modal('edit-order')->close();
         $this->reset();
         session()->flash('success', 'Order marked as delivered');
