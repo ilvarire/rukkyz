@@ -46,12 +46,12 @@ class AddFood extends Component
         $width = $img->width();
         $height = $img->height();
 
-        $expectedRatio = 3 / 4;
+        $expectedRatio = 4 / 3;
         $actualRatio = $width / $height;
         $tolerance = 0.02;
 
         if (abs($actualRatio - $expectedRatio) > $tolerance) {
-            $this->addError("image", "Image must have a 3:4 aspect ratio.");
+            $this->addError("image", "Image must have a 4:3 aspect ratio.");
             return;
         }
 
