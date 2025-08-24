@@ -14,7 +14,7 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                    <a href="cart.html"
+                    <a href="{{route('cart')}}"
                         class="bg-african-green hover:bg-light-green text-white px-8 py-3 rounded-lg font-semibold transition duration-300">
                         <i class="fas fa-shopping-cart mr-2"></i>Return to Cart
                     </a>

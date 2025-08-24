@@ -21,6 +21,7 @@ use Stripe\Stripe;
 #[Layout('components.layouts.guest')]
 class Checkout extends Component
 {
+    public $delivery_type = 'door';
     public $country_id = null;
     public $state = null;
     public $address = null;
@@ -59,6 +60,18 @@ class Checkout extends Component
             $this->calculateShipping();
         } elseif ($property == 'state_id') {
             if ($this->country_id && $this->state_id) {
+                $this->calculateShipping();
+            }
+        } elseif ($property === 'delivery_type') {
+            if ($value === 'door') {
+                $this->reset(['country_id', 'state_id', 'address', 'city', 'zip_code',]);
+                $this->calculateShipping();
+            } else if ($value === 'pickup') {
+                $this->country_id = 1;
+                $this->state_id = 1;
+                $this->address = 'Pick up address to be communicated';
+                $this->city = 'Pick up';
+                $this->zip_code = 'pick up';
                 $this->calculateShipping();
             }
         }
@@ -135,9 +148,19 @@ class Checkout extends Component
             'phone_number' => 'required|string|max:20',
             'zip_code' => 'required|string|max:10',
             'country_id' => 'required|integer|exists:countries,id',
-            'state_id' => 'required|string|max:30|exists:shipping_fees,id',
-            'note' => 'nullable|max:600'
+            'state_id' => 'required|max:30|exists:shipping_fees,id',
+            'note' => 'nullable|max:600',
+            'delivery_type' => 'required|in:door,pickup',
         ]);
+
+        if ($this->delivery_type === 'pickup') {
+            $this->country_id = 1;
+            $this->state_id = 1;
+            $this->address = 'Pick up address to be communicated';
+            $this->city = 'Pick up';
+            $this->zip_code = 'pick up';
+            $this->calculateShipping();
+        }
 
         $this->loadCartItems();
         if (!$this->coupon) {

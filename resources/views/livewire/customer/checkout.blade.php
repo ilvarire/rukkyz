@@ -10,42 +10,83 @@
                     <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
                         <h2 class="text-xl font-semibold text-african-green mb-6">Delivery Information</h2>
 
+                        <!-- Payment Method -->
+                        <h2 class="text-l font-semibold text-african-orange">Delivery Type</h2>
+                        <div class="bg-white rounded-lg shadow-lg p-6 grid md:grid-cols-3 gap-6">
+                            <div class="space-y-4">
+                                <div class="border border-gray-300 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <input type="radio" wire:model.live="delivery_type" name="delivery_type"
+                                            value="pickup" class="mr-3 cursor-pointer">
+                                        <label for="pickup" class="flex items-center cursor-pointer">
+                                            <i class="fas fa-suitcase text-african-green mr-2"></i>
+                                            <span class="font-semibold">Pick Up</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="space-y-4">
+                                <div class="border border-gray-300 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <input type="radio" wire:model.live="delivery_type" name="delivery_type"
+                                            value="door" class="mr-3 cursor-pointer">
+                                        <label for="door" class="flex items-center cursor-pointer">
+                                            <i class="fas fa-location-dot text-african-green mr-2"></i>
+                                            <span class="font-semibold">Door Delivery</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        @error('delivery_type')
+                            <span class="text-xs text-red-600">{{$message}}</span>
+                        @enderror
+
                         <form class="space-y-6">
+                            @if($delivery_type === 'door')
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Country</label>
+                                    <select wire:model.live="country_id" @if($delivery_type === 'pickup') disabled @endif
+                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                        <option value="">-- select country --</option>
+                                        @forelse ($countries as $country)
+                                            <option value="{{ $country->id}}">{{ $country->name}}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                    @error('country_id')
+                                        <span class="text-xs text-red-600">{{$message}}</span>
+                                    @enderror
+                                </div>
 
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">State/County</label>
+                                    <select wire:model.live="state_id" @if($delivery_type === 'pickup') disabled @endif
+                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
+                                        <option value="1">-- select state --</option>
+                                        @if ($states)
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state->id }}">{{ $state->state }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @error('state_id')
+                                        <span class="text-xs text-red-600">{{$message}}</span>
+                                    @enderror
+                                </div>
+                            @endif
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Country</label>
-                                <select wire:model.live="country_id"
-                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
-                                    <option value="">-- select country --</option>
-                                    @forelse ($countries as $country)
-                                        <option value="{{ $country->id}}">{{ $country->name}}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                                @error('country_id')
-                                    <span class="text-xs text-red-600">{{$message}}</span>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">State</label>
-                                <select wire:model.live="state_id"
-                                    class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
-                                    <option value="1">-- select state --</option>
-                                    @if ($states)
-                                        @foreach ($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->state }}</option>
-                                        @endforeach
+                                <label class="block text-gray-700 font-semibold mb-2">
+                                    @if($delivery_type === 'pickup')
+                                        PickUp Address
+                                    @else
+                                        Delivery Address
                                     @endif
-                                </select>
-                                @error('state_id')
-                                    <span class="text-xs text-red-600">{{$message}}</span>
-                                @enderror
-                            </div>
-
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">Delivery Address</label>
+                                </label>
                                 <input wire:model="address" type="text" value="{{ old('address') }}"
+                                    @if($delivery_type === 'pickup') disabled @endif
                                     class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
                                     placeholder="123 Main Street">
                                 @error('address')
@@ -54,32 +95,36 @@
                             </div>
 
                             <div class="grid md:grid-cols-3 gap-6">
+                                @if($delivery_type === 'door')
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold mb-2">
+                                            City
+                                        </label>
+                                        <input wire:model="city" type="text" value="{{ old('city') }}"
+                                            @if($delivery_type === 'pickup') disabled @endif
+                                            class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                            placeholder="NY">
+                                        @error('city')
+                                            <span class="text-xs text-red-600">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold mb-2">Post Code</label>
+                                        <input wire:model="zip_code" type="tel" value="{{ old('zip_code') }}"
+                                            @if($delivery_type === 'pickup') disabled @endif
+                                            class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
+                                            placeholder="10001">
+                                        @error('zip_code')
+                                            <span class="text-xs text-red-600">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                @endif
                                 <div>
                                     <label class="block text-gray-700 font-semibold mb-2">Phone</label>
                                     <input type="tel" placeholder="+1 234 567 8900" wire:model="phone_number"
                                         value="{{ old('phone_number') }}"
                                         class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green">
                                     @error('phone_number')
-                                        <span class="text-xs text-red-600">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">
-                                        City
-                                    </label>
-                                    <input wire:model="city" type="text" value="{{ old('city') }}"
-                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
-                                        placeholder="NY">
-                                    @error('city')
-                                        <span class="text-xs text-red-600">{{$message}}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">ZIP Code</label>
-                                    <input wire:model="zip_code" type="tel" value="{{ old('zip_code') }}"
-                                        class="w-full border border-gray-300 text-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-african-green"
-                                        placeholder="10001">
-                                    @error('zip_code')
                                         <span class="text-xs text-red-600">{{$message}}</span>
                                     @enderror
                                 </div>
@@ -186,7 +231,7 @@
 
                         <!-- Place Order Button -->
                         <button wire:loading.attr="disabled" wire:click="placeOrder"
-                            class="w-full bg-african-orange hover:bg-orange-600 text-white py-3 rounded-lg font-semibold mt-6 transition duration-300">
+                            class="w-full bg-african-orange cursor-pointer hover:bg-orange-600 text-white py-3 rounded-lg font-semibold mt-6 transition duration-300">
                             <span wire:loading.remove>
                                 Place Order - {{ Number::currency($cart_total, 'GBP') }}
                             </span>
