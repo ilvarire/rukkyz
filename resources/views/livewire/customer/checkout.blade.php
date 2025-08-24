@@ -20,7 +20,7 @@
                                             value="pickup" class="mr-3 cursor-pointer">
                                         <label for="pickup" class="flex items-center cursor-pointer">
                                             <i class="fas fa-suitcase text-african-green mr-2"></i>
-                                            <span class="font-semibold">Pick Up</span>
+                                            <span class="font-semibold text-black">Pick Up</span>
                                         </label>
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                             value="door" class="mr-3 cursor-pointer">
                                         <label for="door" class="flex items-center cursor-pointer">
                                             <i class="fas fa-location-dot text-african-green mr-2"></i>
-                                            <span class="font-semibold">Door Delivery</span>
+                                            <span class="font-semibold text-black">Door Delivery</span>
                                         </label>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                                     <input type="radio" name="payment" id="card" class="mr-3" checked>
                                     <label for="card" class="flex items-center cursor-pointer">
                                         <i class="fas fa-credit-card text-african-green mr-2"></i>
-                                        <span class="font-semibold">Credit/Debit Card</span>
+                                        <span class="font-semibold text-black">Credit/Debit Card</span>
                                     </label>
                                 </div>
                             </div>
