@@ -79,7 +79,7 @@
                                 </div>
                             @endif
                             <div>
-                                <label class="block text-gray-700 font-semibold mb-2">
+                                <label class="block text-gray-700 font-semibold mb-2 mt-2">
                                     @if($delivery_type === 'pickup')
                                         PickUp Address
                                     @else
