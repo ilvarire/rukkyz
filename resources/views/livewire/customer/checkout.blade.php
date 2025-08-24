@@ -16,21 +16,8 @@
                             <div class="space-y-4">
                                 <div class="border border-gray-300 rounded-lg p-4">
                                     <div class="flex items-center">
-                                        <input type="radio" wire:model.live="delivery_type" name="delivery_type"
-                                            value="pickup" class="mr-3 cursor-pointer">
-                                        <label for="pickup" class="flex items-center cursor-pointer">
-                                            <i class="fas fa-suitcase text-african-green mr-2"></i>
-                                            <span class="font-semibold text-black">Pick Up</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="space-y-4">
-                                <div class="border border-gray-300 rounded-lg p-4">
-                                    <div class="flex items-center">
-                                        <input type="radio" wire:model.live="delivery_type" name="delivery_type"
-                                            value="door" class="mr-3 cursor-pointer">
+                                        <input type="radio" wire:model.live="delivery_type" name="door" value="door"
+                                            class="mr-3 cursor-pointer">
                                         <label for="door" class="flex items-center cursor-pointer">
                                             <i class="fas fa-location-dot text-african-green mr-2"></i>
                                             <span class="font-semibold text-black">Door Delivery</span>
@@ -39,6 +26,20 @@
                                 </div>
 
                             </div>
+                            <div class="space-y-4">
+                                <div class="border border-gray-300 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <input type="radio" wire:model.live="delivery_type" name="pickup" value="pickup"
+                                            class="mr-3 cursor-pointer">
+                                        <label for="pickup" class="flex items-center cursor-pointer">
+                                            <i class="fas fa-suitcase text-african-green mr-2"></i>
+                                            <span class="font-semibold text-black">Pick Up</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                         @error('delivery_type')
                             <span class="text-xs text-red-600">{{$message}}</span>
