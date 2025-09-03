@@ -27,7 +27,7 @@
                         style="background-color: #FF6B35; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 0.875rem; box-shadow: 0 4px 15px rgba(255,107,53,0.3);">
                         Order Now
                     </a>
-                    <a href="{{ asset('menu/food-menu.pdf') }}" target="_blank" class="hero-button"
+                    <a href="{{route('foods')}}" target="_blank" class="hero-button"
                         style="border: 2px solid white; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 0.875rem;">
                         View Menu
                     </a>
